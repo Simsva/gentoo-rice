@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Stolen (and modified) from LukeSmithxyz's dotfiles
+# The famous "get a menu of emojis to copy" script.
+
+files="\
+emoji;$XDG_DATA_HOME/emoji
+glyphs;$XDG_DATA_HOME/glyphs"
+
+# Automate this part?
+if [ "$1" ]; then
+	file="$(echo "$files" | grep "^$1;" | cut -d';' -f2)" || exit 1
+else
+	choice="$(echo "$files" | cut -d';' -f1 | dmenu -i -p "Which charset?")" &&
+	file="$(echo "$files" | grep "^$choice;" | cut -d';' -f2)" || exit 1
+fi
+[ -z "$file" ] && exit 1
+
+# Get user selection via dmenu from emoji file.
+chosen=$(cat "$file" | dmenu -i -l 30 | sed "s/ .*//")
+
+# Exit if none chosen.
+[ -z "$chosen" ] && exit
+
+# If you run this command with an argument, it will automatically insert the
+# character. Otherwise, show a message that the emoji has been copied.
+if [ -n "$1" ]; then
+	xdotool type "$chosen"
+else
+	printf "$chosen" | xclip -selection clipboard
+	notify-send "'$chosen' copied to clipboard." &
+fi

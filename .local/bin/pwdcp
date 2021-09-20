@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Copy pwd to clipboard
+pwd | tr -d '\n' | xclip -selection clipboard

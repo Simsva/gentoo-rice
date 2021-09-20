@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Visuals
+setbg &
+xrdb -merge "$XRESOURCES" &
+
+# Input
+$HOME/.local/bin/inputsettings &
+
+# Programs
+dunst &
+transmission-daemon &
+picom &
+pipewire &
+dwmblocks &
+exec ssh-agent dwm 2>&1 > "$XDG_CACHE_HOME/dwm/dwm.log"

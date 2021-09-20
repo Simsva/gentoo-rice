@@ -1,0 +1,9 @@
+gtk-icon-theme-name = "Adwaita"
+gtk-theme-name = "Adwaita-dark"
+
+style "user-font"
+{
+	font_name = "Iosevka Simsva 10"
+}
+widget_class "*" style "user-font"
+gtk-font-name = "Iosevka Simsva 10"

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# cless: View file in $PAGER, but in color
+
+usage="Usage: cless <file>"
+
+[ -z "$1" ] && echo "$usage" && exit 1
+[ ! -f "$1" ] && echo "No such file: '$1'" && exit 1
+highlight --out-format=ansi "$1" | "$PAGER"

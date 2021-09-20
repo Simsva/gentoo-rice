@@ -1,0 +1,19 @@
+## Template for bm-dirs
+##
+## C Preprocessor directives can be used,
+## therefore comments start with two hashtags
+
+## Base directories
+h   $HOME
+cf  ${XDG_CONFIG_HOME:-$HOME/.config}
+dt  ${XDG_DATA_HOME:-$HOME/.local/share}
+cac ${XDG_CACHE_HOME:-$HOME/.cache}
+sc  $HOME/.local/bin
+src $HOME/.local/src
+
+## Library directories
+dl  ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
+dd  ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+pp  ${XDG_PICTURES_DIR:-$HOME/Pictures}
+vv  ${XDG_VIDEOS_DIR:-$HOME/Videos}
+mm  ${XDG_MUSIC_DIR:-$HOME/Music}

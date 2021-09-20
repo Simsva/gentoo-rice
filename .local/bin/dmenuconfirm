@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Simple yes/no menu in dmenu
+# First argument is prompt
+
+[ "$(echo "No\nYes" | dmenu -i -fn "monospace:bold" -p "${1:-Confirm?}")" = "Yes" ] || exit 1

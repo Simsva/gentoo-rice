@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# Alias vim to vi (managed by eselect in Gentoo)
+alias vim="vi" vimdiff="vi -d"
+
+# Use different config files for programs
+[ -f "$XINITRC" ] && alias startx="startx \"$XINITRC\""
+[ -f "$YARNRC" ] && alias yarn="yarn --use-yarnrc \"$YARNRC\""
+
+# doas not required for some commands
+for cmd in shutdown reboot mount umount emerge eselect dispatch-conf su gpasswd; do
+  alias $cmd="doas $cmd"
+done; unset cmd
+
+# Normal aliases
+alias \
+  sudo="doas" \
+  steam="steamwm" \
+
+# Default settings for programs
+alias \
+  cp="cp -iv" \
+  mv="mv -iv" \
+  rm="rm -Iv" \
+  bc="bc -ql" \
+  mkd="mkdir -pv" \
+  yt="youtube-dl --add-metadata -i" \
+  ffmpeg="ffmpeg -hide_banner" \
+  du="du -h" \
+  df="df -h" \
+  cal="cal -mw" \
+
+# Colorize commands
+alias \
+  ls="ls -h --literal --color=auto --group-directories-first" \
+  grep="grep --color=auto" \
+  diff="diff --color=auto" \
+  ccat="highlight --out-format=ansi" \
+
+# Abbreviations
+alias \
+  ka="killall" \
+  btw="neofetch" \
+  g="git" \
+  z="zathura" \
+  trem="transmission-remote" \
+  sdn="sysact -f shutdown" \
+  rbt="sysact -f reboot" \
+  e="$EDITOR" \
+  de="doas $EDITOR" \
+  v="$VISUAL" \
+  dv="doas $VISUAL" \
+  em="/usr/bin/emerge" \
+  dem="doas emerge" \
+  p="doas emerge" \
+  es="/usr/bin/eselect" \
+  des="doas eselect" \
+  eq="equery" \
+  l="ls -l" \
+  ll="ls -la" \

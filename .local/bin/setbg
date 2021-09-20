@@ -1,0 +1,11 @@
+#!/bin/sh
+
+bgfile="$XDG_DATA_HOME/bg"
+
+inputfile="$(readlink -f "$1")" &&
+case "$(file --mime-type -b "$inputfile")" in
+  image/*) ln -sf "$inputfile" "$bgfile" ;;
+  *) exit 1 ;;
+esac
+
+[ -f "$bgfile" ] && xwallpaper --zoom "$bgfile" || exit 1

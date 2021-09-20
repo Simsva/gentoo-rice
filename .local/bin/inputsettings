@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Settings for input devices
+# Only needed in case correct settings are not
+# applied when a device is plugged in
+
+# Should be handled in /etc/X11/30-input.conf
+setxkbmap se nodeadkeys \
+  -option compose:rctrl-altgr -option mod_led:compose \
+  -option caps:escape_shifted_capslock \
+  -option keypad:pointerkeys &
+
+xset r rate 300 50 &
+numlockx on &

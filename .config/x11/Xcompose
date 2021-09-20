@@ -1,0 +1,7 @@
+# Custom compose sequences
+
+# Greek
+<Multi_key> <p> <i> : "π"
+<Multi_key> <P> <I> : "Π"
+<Multi_key> <o> <m> : "ω"
+<Multi_key> <O> <M> : "Ω"

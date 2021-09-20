@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# System/power action handler
+
+while getopts "fp:" args; do
+  case "$args" in
+    f) force=1 ;;
+    p) prompt=$OPTARG ;;
+    *) exit 1 ;;
+  esac
+done
+shift $((OPTIND-1))
+
+cmds="\
+dwmq|quit dwm|kill -TERM $(pgrep -u "$USER" "\bdwm$")
+dwmr|reload dwm|kill -HUP $(pgrep -u "$USER" "\bdwm$")
+shutdown|shutdown|doas openrc-shutdown -p 0
+reboot|reboot|doas openrc-shutdown -r 0"
+
+if [ "$1" ]; then
+  cmd="$(echo "$cmds" | grep "^$1|" | cut -d'|' -f3)" || exit 1
+else
+  choice="$(echo "$cmds" | cut -d'|' -f2 | dmenu -fn "monospace:bold" -p "Action?")" &&
+  cmd="$(echo "$cmds" | grep "^.*|$choice" | cut -d'|' -f3)" || exit 1
+fi
+
+if [ "$cmd" ]; then
+  if [ "$force" ]; then
+    eval "$cmd"
+  else
+    dmenuconfirm "${prompt:-Confirm}" && eval "$cmd"
+  fi
+fi

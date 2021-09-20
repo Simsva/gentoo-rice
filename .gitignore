@@ -1,0 +1,80 @@
+## Ignore everything, except git files
+*
+!.gitignore
+!.gitmodules
+
+## Unignore config files
+!.zprofile
+
+!.config/
+!.config/user-dirs.dirs
+
+!.config/doom/
+!.config/doom/*
+
+!.config/dunst/
+!.config/dunst/*
+
+# Git submodule for doom-emacs
+!.config/emacs/
+
+!.config/gtk-2.0/
+!.config/gtk-2.0/gtkrc
+
+!.config/gtk-3.0/
+!.config/gtk-3.0/settings.ini
+
+!.config/lf/
+!.config/lf/*
+.config/lf/shortcutrc
+
+!.config/mpv/
+!.config/mpv/mpv.conf
+
+!.config/neofetch/
+!.config/neofetch/*
+
+!.config/npm/
+!.config/npm/*
+
+# TODO: Better structure
+!.config/nvim/
+!.config/nvim/init.vim
+
+!.config/picom/
+!.config/picom/*
+
+!.config/shell/
+!.config/shell/*
+.config/shell/bm-files
+.config/shell/bm-dirs
+.config/shell/shortcutrc
+.config/shell/zshnameddirrc
+
+!.config/wget/
+!.config/wget/*
+
+!.config/x11/
+!.config/x11/*
+
+!.config/yarn/
+!.config/yarn/*
+
+!.config/zsh/
+!.config/zsh/.zshrc
+
+## Unignore .local files
+!.local/
+
+# Scripts
+!.local/bin/
+!.local/bin/*
+.local/bin/yarn/
+
+!.local/share/
+!.local/share/emoji
+!.local/share/glyphs
+
+# TODO: desktop files
+!.local/share/applications/
+!.local/share/applications/*.desktop

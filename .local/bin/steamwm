@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Run steam using steamwm if it exists, otherwise launch steam normally
+# See https://github.com/dscharrer/steamwm for details
+
+[ -f "$STEAMWM" ] && DEBUGGER="$STEAMWM" steam || steam

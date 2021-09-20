@@ -1,0 +1,67 @@
+#!/bin/zsh
+
+# Runs on login, sets environment variables
+
+# Default programs
+# Managed by eselect
+#export EDITOR="vi"
+#export VISUAL="vi"
+export TERMINAL="st"
+export PAGER="less"
+export FILE="lf"
+export BROWSER="firefox"
+
+# XDG Base Directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# XDG User Directories
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs" ] && \
+  for dir in $(sed "/^\s*#/d" "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs"); do
+    export $(eval "echo \"$dir\"");
+  done;
+
+# ~/ cleanup
+# TODO: Organize
+export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export XRESOURCES="$XDG_CONFIG_HOME/x11/Xresources"
+export XCOMPOSEFILE="$XDG_CONFIG_HOME/x11/Xcompose"
+export XCOMPOSECACHE="$XDG_CACHE_HOME/x11/Xcompose"
+export LESSHISTFILE="-"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=\"$XDG_CONFIG_HOME\"/java"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
+export PSQL_HISTORY="$XDG_CACHE_HOME/pg/psql_history"
+export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
+export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
+export EMACSDIR="$XDG_CONFIG_HOME/emacs"
+export DOOMDIR="$XDG_CONFIG_HOME/doom"
+export DOOMLOCALDIR="$EMACSDIR/.local"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+# Used in aliasrc
+export YARNRC="$XDG_CONFIG_HOME/yarn/yarnrc"
+export STEAMWM="$HOME/.local/src/steamwm/steamwm.cpp"
+
+# PATH
+IFS=$'\n'; paths=(
+  # Used for doom-emacs (bin/doom)
+  "${EMACSDIR:-$HOME/.emacs.d}/bin"
+  # ~/.local/bin and all subdirectories
+  $(find "$HOME/.local/bin" -type d -printf "%p\n")
+); IFS=$' \t\n'
+
+# Add all entries in $paths to PATH
+export PATH="$PATH:${$(printf "%s:" "${paths[@]}")%%:}"
+
+# Start X on tty1 if not already running
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
