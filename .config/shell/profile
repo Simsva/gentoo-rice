@@ -6,8 +6,8 @@
 # Managed by eselect
 #export EDITOR="vi"
 #export VISUAL="vi"
+#export PAGER="less"
 export TERMINAL="st"
-export PAGER="less"
 export FILE="lf"
 export BROWSER="firefox"
 

@@ -13,7 +13,7 @@ src $HOME/.local/src
 
 ## Library directories
 dl  ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
-dd  ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
-pp  ${XDG_PICTURES_DIR:-$HOME/Pictures}
-vv  ${XDG_VIDEOS_DIR:-$HOME/Videos}
-mm  ${XDG_MUSIC_DIR:-$HOME/Music}
+dc  ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+pc  ${XDG_PICTURES_DIR:-$HOME/Pictures}
+vd  ${XDG_VIDEOS_DIR:-$HOME/Videos}
+mu  ${XDG_MUSIC_DIR:-$HOME/Music}
