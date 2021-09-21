@@ -72,6 +72,8 @@
 !.local/bin/statusbar
 !.local/bin/statusbar/*
 .local/bin/yarn/
+# For scripts that should not be saved with git
+.local/bin/hidden/
 
 !.local/share/
 !.local/share/emoji
