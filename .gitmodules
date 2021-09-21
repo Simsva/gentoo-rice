@@ -1,3 +1,6 @@
 [submodule ".config/emacs"]
 	path = .config/emacs
 	url = https://github.com/hlissner/doom-emacs.git
+[submodule ".local/share/zsh-syntax"]
+	path = .local/share/zsh-syntax
+	url = https://github.com/zdharma/fast-syntax-highlighting.git
