@@ -69,11 +69,13 @@
 # Scripts
 !.local/bin/
 !.local/bin/*
+!.local/bin/statusbar
 .local/bin/yarn/
 
 !.local/share/
 !.local/share/emoji
 !.local/share/glyphs
+!.local/share/zsh-syntax
 
 # TODO: desktop files
 !.local/share/applications/

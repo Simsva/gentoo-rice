@@ -93,4 +93,4 @@ bindkey '^e' edit-command-line
 [ "$(ssh-add -L)" = "The agent has no identities." ] && ssh-add ~/.ssh/id_rsa
 
 # Load syntax highlighting. Should be last
-source /usr/share/zsh/site-contrib/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+source $HOME/.local/share/zsh-syntax/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
