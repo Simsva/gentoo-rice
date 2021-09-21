@@ -3,7 +3,7 @@
 # Runs on login, sets environment variables
 
 # Default programs
-# Managed by eselect
+# Managed by eselect or /etc/profile
 #export EDITOR="vi"
 #export VISUAL="vi"
 #export PAGER="less"

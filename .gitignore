@@ -70,6 +70,7 @@
 !.local/bin/
 !.local/bin/*
 !.local/bin/statusbar
+!.local/bin/statusbar/*
 .local/bin/yarn/
 
 !.local/share/

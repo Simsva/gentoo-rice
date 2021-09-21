@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# sb-clock: print time and date
+
+case "$BLOCK_BUTTON" in
+  1) notify-send "$(date "+%B %Y")" "$(cal -mw --color=always | sed "1d;s/.\[7m/<b><span color=\"blue\">/g;s/.\[27m/<\/span><\/b>/g")" ;;
+  6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+date "+%Y %b %d (%a) %H:%M:%S %:::z"

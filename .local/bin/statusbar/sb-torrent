@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# sb-torrent: print information about torrents from transmission-daemon
+
+case "$BLOCK_BUTTON" in
+  1) setsid -f "$TERMINAL" -e "tremc" ;;
+  3) pkill -HUP transmission-da ;;
+  6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+transmission-remote -l | grep "%" |
+  sed " # The letters are for sorting and will not appear.
+  s/.*Stopped.*/A 栗/;
+  s/.*Seeding.*/Z /;
+  s/.*100%.*/N /;
+  s/.*Idle.*/B /;
+  s/.*Uploading.*/L /;
+  s/.*%.*/M /" |
+    sort -h | uniq -c | awk '{print $3 $1}' | paste -sd ' ' - | tr -d '\n'
+
+transmission-remote -l | grep "%" | wc -l | xargs printf " (%b)"

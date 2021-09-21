@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# sb-name: print wm version
+
+case "$BLOCK_BUTTON" in
+  6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+printf "$(dwm -v 2>&1 | tr -d '\n') "
