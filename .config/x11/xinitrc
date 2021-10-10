@@ -11,6 +11,7 @@ $HOME/.local/bin/inputsettings &
 dunst &
 transmission-daemon &
 picom &
-pipewire &
+#pipewire &
+pulseaudio &
 dwmblocks &
 exec ssh-agent dwm 2>&1 > "$XDG_CACHE_HOME/dwm/dwm.log"

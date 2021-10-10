@@ -16,6 +16,7 @@ done; unset cmd
 alias \
   sudo="doas" \
   steam="steamwm" \
+  java16="javawrapper /opt/openjdk-bin-16/ java" \
 
 # Default settings for programs
 alias \

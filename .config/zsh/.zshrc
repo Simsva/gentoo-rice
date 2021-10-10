@@ -34,6 +34,7 @@ zstyle ":completion:*" menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
+setopt globdots
 
 # vi mode
 bindkey -v
