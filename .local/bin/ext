@@ -8,10 +8,13 @@
 # Default behavior: Extract archive into new directory
 # Behavior with `-c` option: Extract contents into current directory
 
-while getopts "hc" o; do case "${o}" in
+while getopts "hce:" o; do case "${o}" in
 	c) extracthere="True" ;;
-	*) printf "Options:\\n   -c: Extract archive into current directory rather than a new one.\\n" && exit 1 ;;
+  e) ext="$OPTARG" ;;
+	*) printf "Options:\\n   -c: Extract archive into current directory rather than a new one.\\n   -e: Specify custom extension.\\n" && exit 1 ;;
 esac done
+shift $((OPTIND-1))
+echo "$*"
 
 if [ -z "$extracthere" ]; then
 	archive="$(readlink -f "$*")" &&
@@ -24,8 +27,9 @@ fi
 
 [ -z "$archive" ] && printf "Give archive to extract as argument.\\n" && exit 1
 
+[ -n "$ext" ] && ext=".$ext"
 if [ -f "$archive" ] ; then
-	case "$archive" in
+	case "$archive$ext" in
 		*.tar.bz2|*.tbz2) bsdtar -xf "$archive" ;;
 		*.tar.xz) bsdtar -xf "$archive" ;;
 		*.tar.gz|*.tgz) bsdtar -xf "$archive" ;;

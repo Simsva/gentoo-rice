@@ -1,0 +1,4 @@
+ #!/bin/sh
+ export JAVA_HOME=$1; shift
+ PATH=${JAVA_HOME}/bin:$PATH
+ $*
