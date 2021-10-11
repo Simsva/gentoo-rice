@@ -1,0 +1,47 @@
+#!/bin/sh
+
+# sb-battery: print battery information
+
+case "$BLOCK_BUTTON" in
+  6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+for battery in /sys/class/power_supply/BAT?*; do
+  # Print space if not first battery
+  [ -n "$capacity" ] && printf " "
+
+  icon=""
+
+  #capacity="$(echo "$(cat "$battery/energy_now")/$(cat "$battery/energy_full")*100" | bc -l)"
+  capacity="$(cat "$battery/capacity")"
+  case "$(cat "$battery/status")" in
+    "Charging") icon="" ;;
+    "Discharging")
+      if [ "$capacity" -lt "10" ]; then
+        icon=""
+      elif [ "$capacity" -lt "20" ]; then
+        icon=""
+      elif [ "$capacity" -lt "30" ]; then
+        icon=""
+      elif [ "$capacity" -lt "40" ]; then
+        icon=""
+      elif [ "$capacity" -lt "50" ]; then
+        icon=""
+      elif [ "$capacity" -lt "60" ]; then
+        icon=""
+      elif [ "$capacity" -lt "70" ]; then
+        icon=""
+      elif [ "$capacity" -lt "80" ]; then
+        icon=""
+      elif [ "$capacity" -lt "90" ]; then
+        icon=""
+      else
+        icon=""
+      fi ;;
+    "Full")
+      icon="" ;;
+    *) ;;
+  esac
+
+  printf "%s %s%%" "$icon" "$capacity"
+done

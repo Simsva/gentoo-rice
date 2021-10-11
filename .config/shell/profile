@@ -47,6 +47,7 @@ export EMACSDIR="$XDG_CONFIG_HOME/emacs"
 export DOOMDIR="$XDG_CONFIG_HOME/doom"
 export DOOMLOCALDIR="$EMACSDIR/.local"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GOPATH="$XDG_DATA_HOME/go"
 
 # Used in aliasrc
 export YARNRC="$XDG_CONFIG_HOME/yarn/yarnrc"
