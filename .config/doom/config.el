@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Simon Ericsson"
-      user-mail-address "simsva@protonmail.com")
+      user-mail-address "simon@krlsg.se")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -22,6 +22,10 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
+(after! ccls
+  (setq ccls-initialization-options '(:index (:comments 2) :completion (:detailedLabel t)))
+  (set-lsp-priority! 'ccls 2)) ; optional as ccls is the default in Doom
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -30,13 +34,14 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/docs/org/")
+(setq org-hide-emphasis-markers :true)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
 ;; Change font
-(setq doom-font (font-spec :family "Iosevka Simsva" :size 12)
+(setq doom-font (font-spec :family "Iosevka Simsva" :size 14)
       ;;doom-variable-pitch-font (font-spec :family "Fira Sans") ; inherits `doom-font''s :size
       doom-unicode-font (font-spec :family "JoyPixels" :size 12)
       doom-big-font (font-spec :family "Iosevka Simsva" :size 19))
