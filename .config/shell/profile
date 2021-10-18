@@ -53,6 +53,11 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 export YARNRC="$XDG_CONFIG_HOME/yarn/yarnrc"
 export STEAMWM="$HOME/.local/src/steamwm/steamwm.cpp"
 
+# IME
+export XMODIFIERS=@im-ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+
 # PATH
 IFS=$'\n'; paths=(
   # Used for doom-emacs (bin/doom)
