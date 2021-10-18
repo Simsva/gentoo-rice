@@ -68,9 +68,10 @@
 
 # Scripts
 !.local/bin/
-!.local/bin/*
 !.local/bin/statusbar
 !.local/bin/statusbar/*
+!.local/bin/scripts
+!.local/bin/scripts/*
 .local/bin/yarn/
 # For scripts that should not be saved with git
 .local/bin/hidden/
@@ -82,4 +83,4 @@
 
 # TODO: desktop files
 !.local/share/applications/
-!.local/share/applications/*.desktop
+#!.local/share/applications/*.desktop
