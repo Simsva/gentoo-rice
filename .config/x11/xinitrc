@@ -5,7 +5,7 @@ setbg &
 xrdb -merge "$XRESOURCES" &
 
 # Input
-$HOME/.local/bin/inputsettings &
+$HOME/.local/bin/scripts/inputsettings &
 
 # Programs
 dunst &
