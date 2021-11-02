@@ -22,6 +22,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
     export $(eval "echo \"$dir\"");
   done;
 
+# Environment variable shortcuts
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/envshortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/envshortcutrc"
+
 # ~/ cleanup
 # TODO: Organize
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
@@ -49,6 +52,8 @@ export DOOMLOCALDIR="$EMACSDIR/.local"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GOPATH="$XDG_DATA_HOME/go"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export NUGET_PACKAGES="$XDG_CACHE_HOME/NuGetPackages"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 
 # Used in aliasrc
 export YARNRC="$XDG_CONFIG_HOME/yarn/yarnrc"

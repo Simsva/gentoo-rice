@@ -44,12 +44,16 @@
 !.config/picom/
 !.config/picom/*
 
+!.config/python/
+!.config/python/*
+
 !.config/shell/
 !.config/shell/*
 .config/shell/bm-files
 .config/shell/bm-dirs
 .config/shell/shortcutrc
 .config/shell/zshnameddirrc
+.config/shell/envshortcutrc
 
 !.config/wget/
 !.config/wget/*

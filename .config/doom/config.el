@@ -33,7 +33,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/docs/org/")
+(setq org-directory (substitute-in-file-name "$XDG_DOCUMENTS_DIR/org/"))
 (setq org-hide-emphasis-markers :true)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -62,3 +62,17 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Project directories
+(defun count-slash (path) (interactive) (seq-count (lambda (x) (char-equal x ?/)) path))
+(setq dev-dir-depth (count-slash (substitute-in-file-name "$SHORTCUT_DIR_DEV")))
+(setq dev-dirs
+      (seq-filter
+       (lambda (x)
+         (let ((depth (- (count-slash x) dev-dir-depth)))
+           (and (>= depth 1) (<= depth 1))))
+       (directory-files-recursively (substitute-in-file-name "$SHORTCUT_DIR_DEV") "." t)))
+
+(setq projectile-project-search-path dev-dirs)
+(push (substitute-in-file-name "$SHORTCUT_DIR_SRC") projectile-project-search-path)
+(push (substitute-in-file-name "$HOME") projectile-project-search-path)
